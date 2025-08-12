@@ -10,7 +10,7 @@ set_modules_cost()
 # 获取所有可用模块
 all_modules = list(MODULES.keys())
 selected_modules=all_modules
-application="electricity_meter"         #   electricity_meter, parking_lot , animal_room ，None
+application="electricity_meter"         #   electricity_meter, animal_room
 
 # 定义仿真参数
 simulation_params = {
@@ -82,4 +82,5 @@ with open("all_modules_simulation_results.txt", "w") as f:
         f.write(f"  剩余预算: {available_budget:.2f}\n")
 
 print("\n结果已保存到 all_modules_simulation_results.txt")
+
 
