@@ -1,23 +1,7 @@
 # -*- coding: utf-8 -*-
 # 定义全局配置参数(输入参数)
 GLOBAL_CONFIG = {
-    #根据场景不同用户修改的参数(随机部署（None）场景)
-    # "sensor_num": 100,           # 传感器节点数量(不包括基站)
-    # "area_size": 500,           # 网络区域大小（米），覆盖范围
-    # "packet_size": 2000,                # 传感器数据包大小（字节）,每帧数据大小   
-    # "per_packet_cost": 10,          # 一个数据包的价值 
-    # "per_sensor_cost": 10,            # 单个节点硬件成本(元)
-    # "budget": 500000,                 # 预算约束(元)
-    # "development_cycle": 5,           # 开发周期（月）
-    # "life_span": 12,                   # 仿真时间，要求至少寿命(月)
-    # "per_wai_cost": 1,                # 单个硬件外围成本
-    # "installation_per_cost": 10,      # 每个节点部署成本
-    # "frequency_sampling":60*60,            #采样/上传频率（s/次）
-    # "per_check_cost": 100,                # 每次预防性检查的代价（元）
-    # "cluster_head_percentage": 0.15,  # 簇头比例
-    # "max_hops": 5,              # 扇区数量：簇头最大跳数限制(1-8),不得超过8，1指所有簇头直接连接基站
-    # "frames_per_round":2,   #每轮帧数   frequency_sampling*frames_per_round=每轮时间（s）
-
+    #根据场景不同用户修改的参数
     #电表场景     
     # "sensor_num": 100,           # 传感器节点数量(不包括基站)
     # "area_size": 500,           # 网络区域大小（米），覆盖范围
@@ -189,4 +173,5 @@ DEFAULT_PARAM_VALUES = {
     "frequency_heartbeat": (GLOBAL_CONFIG["frequency_sampling"]/60+GLOBAL_CONFIG["frequency_sampling"]) / 2,
     "heartbeat_loss_threshold": (3 + 15) / 2
 }
+
 
