@@ -13,3 +13,5 @@ Calculate the total cost by not selecting maintenance modules and fixing paramet
 Particle Swarm Optimization Algorithm:particle_swarm.py
 Simulated Annealing Algorithm:simulated_annealing.py
 Hybridization of genetic and simulated annealing algorithms:ga_sa.py
+
+Number of CPU cores:128
