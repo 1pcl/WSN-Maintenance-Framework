@@ -123,9 +123,6 @@ class WSNSimulation:
             x = center_x - building_width * 0.25
             y = lobby_height * 0.5
             self.max_comm_range = self._distance(0,0,building_width,building_height)
-        elif(self.application=="parking_lot"):
-            x=self.area - 10
-            y=self.area - 10
         elif(self.application=="animal_room"):
             x= (self.area / 4 )*3
             y= self.area + 25.0
@@ -164,27 +161,7 @@ class WSNSimulation:
                 elif unit == 2:  # 右侧第一户
                     x = center_x + building_width * 0.25
                 else:  # 右侧第二户
-                    x = center_x + building_width * 0.35
-            elif(self.application=="parking_lot"):
-                i_mode=i%8
-                i_chu=math.floor((i-1)/8)
-                if(i_mode==1):
-                    y=10+((self.area-20) / 12)*0.5
-                elif(i_mode==2):
-                    y=10+((self.area-20) / 12)*2.5
-                elif(i_mode==3):
-                    y=10+((self.area-20) / 12)*3.5
-                elif(i_mode==4):
-                    y=10+((self.area-20) / 12)*5.5      
-                elif(i_mode==5):
-                    y=10+((self.area-20) / 12)*6.5
-                elif(i_mode==6):
-                    y=10+((self.area-20) / 12)*8.5
-                elif(i_mode==7):
-                    y=10+((self.area-20) / 12)*9.5      
-                else:
-                    y=10+((self.area-20) / 12)*11.5   
-                x=(self.area / 25)*(i_chu) 
+                    x = center_x + building_width * 0.35 
             elif(self.application=="animal_room"):
                 i_chu=math.floor((i-1)/5)
                 i_mode=(i-1)%5
@@ -859,54 +836,6 @@ class WSNSimulation:
                 fontweight='bold',
                 color='#8B4513'
             )
-            # 停车场场景的特殊处理
-        elif self.application == "parking_lot":
-            # 绘制停车位网格
-            slot_width = (self.area / 25) * 0.8  # 车位宽度
-            slot_height = ((self.area-20) / 12) * 0.8  # 车位高度
-            
-            # 绘制所有停车位
-            for i in range(1, self.sensor_num+1):
-                # 计算车位位置（与节点生成逻辑一致）
-                i_mode = i % 8
-                i_chu = math.floor((i-1)/8)
-                
-                if(i_mode==1):
-                    y=10+((self.area-20) / 12)*0.5
-                elif(i_mode==2):
-                    y=10+((self.area-20) / 12)*2.5
-                elif(i_mode==3):
-                    y=10+((self.area-20) / 12)*3.5
-                elif(i_mode==4):
-                    y=10+((self.area-20) / 12)*5.5      
-                elif(i_mode==5):
-                    y=10+((self.area-20) / 12)*6.5
-                elif(i_mode==6):
-                    y=10+((self.area-20) / 12)*8.5
-                elif(i_mode==7):
-                    y=10+((self.area-20) / 12)*9.5      
-                else:
-                    y=10+((self.area-20) / 12)*11.5   
-                x=(self.area / 25)*(i_chu) 
-                
-                # 绘制车位矩形
-                slot = plt.Rectangle(
-                    (x - slot_width/2, y - slot_height/2),
-                    slot_width,
-                    slot_height,
-                    fill=False,
-                    edgecolor='gray',
-                    linewidth=0.7,
-                    alpha=0.7
-                )
-                plt.gca().add_patch(slot)                      
-            
-            # 添加停车场边界
-            boundary = plt.Rectangle(
-                (0, 0), self.area, self.area,
-                fill=False, edgecolor='black', linewidth=2
-            )
-            plt.gca().add_patch(boundary)
         # 动物房场景的特殊处理
         elif self.application == "animal_room":            
             # 绘制房间分隔线
@@ -956,11 +885,6 @@ class WSNSimulation:
                 plt.Line2D([0], [0], color='#F0F0FF', lw=4, label='Lobby'),
                 plt.Line2D([0], [0], color='#8B4513', lw=4, label='Main Entrance')
             ])
-            # 添加停车场图例
-        elif self.application == "parking_lot":
-            legend_elements.append(
-                plt.Line2D([0], [0], color='gray', lw=1, label='Parking Slots')
-            )
         elif self.application=="animal_room":
             # 添加建筑元素图例
             legend_elements.append(Line2D([0], [0], color='blue', lw=2, label='Room Walls'))
@@ -978,9 +902,6 @@ class WSNSimulation:
         if self.application == "electricity_meter":
             plt.xlim([building_left - 10, building_left + building_width + 30])
             plt.ylim([-building_height*0.05, building_height*1.05])
-        elif self.application == "parking_lot":
-            plt.xlim([-5, self.area + 5])
-            plt.ylim([-5, self.area + 5])
         elif self.application=="animal_room":
             # 设置坐标轴范围
             plt.xlim([-10, 550])
@@ -1179,69 +1100,6 @@ class WSNSimulation:
                 color='#8B4513',
                 zorder=5
             )
-        # 停车场场景的特殊处理
-        elif self.application == "parking_lot":
-            # 绘制停车位网格
-            slot_width = (self.area / 25) * 0.8  # 车位宽度
-            slot_height = ((self.area-20) / 12) * 0.8  # 车位高度
-            
-            # 绘制所有停车位
-            for i in range(1, self.sensor_num+1):
-                # 计算车位位置（与节点生成逻辑一致）
-                i_mode = i % 8
-                i_chu = math.floor((i-1)/8)
-                
-                if(i_mode==1):
-                    y=10+((self.area-20) / 12)*0.5
-                elif(i_mode==2):
-                    y=10+((self.area-20) / 12)*2.5
-                elif(i_mode==3):
-                    y=10+((self.area-20) / 12)*3.5
-                elif(i_mode==4):
-                    y=10+((self.area-20) / 12)*5.5      
-                elif(i_mode==5):
-                    y=10+((self.area-20) / 12)*6.5
-                elif(i_mode==6):
-                    y=10+((self.area-20) / 12)*8.5
-                elif(i_mode==7):
-                    y=10+((self.area-20) / 12)*9.5      
-                else:
-                    y=10+((self.area-20) / 12)*11.5   
-                x=(self.area / 25)*(i_chu) 
-                
-                # 绘制车位矩形
-                slot = plt.Rectangle(
-                    (x - slot_width/2, y - slot_height/2),
-                    slot_width,
-                    slot_height,
-                    fill=False,
-                    edgecolor='gray',
-                    linewidth=0.7,
-                    alpha=0.7,
-                    zorder=1  # 确保在底层
-                )
-                ax.add_patch(slot)
-                
-                # 添加车位编号
-                ax.text(
-                    x, y,
-                    str(i),
-                    ha='center',
-                    va='center',
-                    fontsize=6,
-                    zorder=2
-                )
-            
-            # 设置坐标轴范围
-            ax.set_xlim([-5, self.area + 5])
-            ax.set_ylim([-5, self.area + 5])
-            
-            # 添加停车场边界
-            boundary = plt.Rectangle(
-                (0, 0), self.area, self.area,
-                fill=False, edgecolor='black', linewidth=2, zorder=1
-            )
-            ax.add_patch(boundary)
         # 动物房场景的特殊处理
         elif self.application == "animal_room":
             # 整个区域尺寸
@@ -1342,11 +1200,6 @@ class WSNSimulation:
                 Line2D([0], [0], color='#F0F0FF', lw=4, label='Lobby'),
                 Line2D([0], [0], color='#8B4513', lw=4, label='Main Entrance')
             ])
-            # 添加停车场图例
-        elif self.application == "parking_lot":
-            legend_elements.append(
-                Line2D([0], [0], color='gray', lw=1, label='Parking Slots')
-            )
         elif self.application=="animal_room":
             # 添加建筑元素图例
             legend_elements.append(Line2D([0], [0], color='blue', lw=2, label='Room Walls'))
@@ -1362,9 +1215,6 @@ class WSNSimulation:
         if self.application == "electricity_meter":
             ax.set_xlim([building_left - 10, building_left + building_width + 30])
             ax.set_ylim([-building_height*0.05, building_height*1.05])
-        elif self.application == "parking_lot":
-            ax.set_xlim([-5, self.area + 5])
-            ax.set_ylim([-5, self.area + 5])
         elif self.application=="animal_room":
             # 设置坐标轴范围
             ax.set_xlim([-10, 550])
@@ -1641,4 +1491,5 @@ class WSNSimulation:
         path.reverse()  
         return path
     
+
 
