@@ -24,7 +24,7 @@ set_modules_cost()
 # 获取所有模块名称
 all_modules = list(MODULES.keys())
 print(f"Total modules available: {len(all_modules)}")
-application = "animal_room"  # parking_lot, animal_room, None, electricity_meter
+application = "animal_room"  #  animal_room, electricity_meter
 
 def compare_individuals(ind1, ind2):
     """多标准排序：
@@ -746,4 +746,5 @@ if __name__ == "__main__":
         print(f"Error during optimization: {e}")
         import traceback
         traceback.print_exc()
+
         sys.exit(1)
