@@ -10,7 +10,7 @@ set_modules_cost()
 
 # 不选择任何模块
 selected_modules = []  # 空列表表示不选择任何模块
-application = "electricity_meter"  # parking_lot, animal_room, None, electricity_meter
+application = "animal_room"  # animal_room, electricity_meter
 
 # 定义仿真参数
 simulation_params = {
@@ -78,5 +78,6 @@ with open("no_modules_simulation_results.txt", "w") as f:
     else:
         available_budget = GLOBAL_CONFIG['budget'] - (base_cost + module_cost)
         f.write(f"  剩余预算: {available_budget:.2f}\n")
+
 
 print("\n结果已保存到 no_modules_simulation_results.txt")
