@@ -8,10 +8,9 @@ Calculate the cost and expenses:calculate_cost.py
 Cost of the calculation module:module_cost.py
 Input data (can be modified as needed):utilities.py
 Wireless sensor network simulation code:wsn_simulation.py
-Calculate the total cost by selecting all maintenance modules and fixing parameters:test.py
-Calculate the total cost by not selecting maintenance modules and fixing parameters Genetic Algorithm:test1.py
 Particle Swarm Optimization Algorithm:particle_swarm.py
 Simulated Annealing Algorithm:simulated_annealing.py
 Hybridization of genetic and simulated annealing algorithms:ga_sa.py
 
 Number of CPU cores:128
+
