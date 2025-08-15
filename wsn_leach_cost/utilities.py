@@ -166,12 +166,13 @@ FAULT_TYPES = {
     }
 }
 
-#常规值取中位数
+#常规值取可靠性最高的
 DEFAULT_PARAM_VALUES = {
-    "warning_energy": (0.0 + 50.0) / 2,
-    "preventive_check_days": (round(GLOBAL_CONFIG["frequency_sampling"]/(60*60*24)) + 180) / 2,
-    "frequency_heartbeat": (GLOBAL_CONFIG["frequency_sampling"]/60+GLOBAL_CONFIG["frequency_sampling"]) / 2,
-    "heartbeat_loss_threshold": (3 + 15) / 2
+    "warning_energy": 50.0,
+    "preventive_check_days": 1,
+    "frequency_heartbeat": (GLOBAL_CONFIG["frequency_sampling"]/60),
+    "heartbeat_loss_threshold": 3
 }
+
 
 
